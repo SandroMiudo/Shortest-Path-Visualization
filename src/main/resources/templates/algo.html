@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .flex-container{
+        width: calc((50*25)*1px + 100px);
+        height: calc(10*25*1px+ 100px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .cell{
+        height: 25px;
+        width: 25px;
+        border: solid black 1px;
+    }
+</style>
+
+<body>
+    <div class="flex-container">
+        <div th:id="${node.getId()}" th:each="node : ${nodes}" th:value="${node.getId()}" class="cell"></div>
+    </div>
+    <a href="/">Return</a>
+
+</body>
+<script th:inline="javascript">
+    /*<![CDATA[*/ var data = [[${preds}]]; /*]]>*/
+    for(let x of data){
+        document.getElementById(x).style.backgroundColor = 'purple';
+    }
+</script>
+</html>

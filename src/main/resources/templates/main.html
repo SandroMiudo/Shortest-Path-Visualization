@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/dijkstra.js"></script>
+    <title>Main</title>
+</head>
+<style>
+
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .flex-container{
+        width: calc((50*25)*1px + 100px);
+        height: calc(10*25*1px+ 100px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .cell{
+        position: relative;
+        height: 25px;
+        width: 25px;
+        border: solid black 1px;
+    }
+
+    .inner-cell{
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background-color: lightblue;
+        animation-iteration-count: 1;
+        animation-name: algo;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+    }
+
+    .inner-block-point{
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background-color: gray;
+        animation-iteration-count: 1;
+        animation-name: block-point-animation;
+        animation-duration: 0.01s;
+        animation-timing-function: linear;
+    }
+
+    .inner-cell-points{
+        position: absolute;
+        height: 25px;
+        width: 25px;
+        background-color: lightgreen;
+        animation-iteration-count: 1;
+        animation-name: points;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+    }
+
+    @keyframes block-point-animation {
+        from{
+            transform: scale(0.1,0.1);background-color: lightgray;
+        }
+        to{
+            transform: scale(1,1);background-color: gray;
+        }
+    }
+
+    @keyframes algo {
+        from{
+            transform: scale(0.1,0.1);background-color: lightgreen;
+        }
+        to{
+            transform: scale(1,1);background-color: lightskyblue;
+        }
+    }
+
+    @keyframes points {
+        from{
+            transform: scale(0.1,0.1);background-color: lightskyblue;
+        }
+        to{
+            transform: scale(1,1);background-color: lightgreen;
+        }
+    }
+
+</style>
+<body>
+    <div class="flex-container">
+        <div th:each="node : ${nodes}" class="cell" th:id="${node.getId()}" th:value="${node.getId()}" onclick="f(this)"
+             draggable="true"></div>
+    </div>
+    <div style="margin: auto;">
+        <button onclick="reset()">Reset</button>
+        <button onclick="solve()">Solve</button>
+    </div>
+</body>
+<script>
+
+</script>
+</html>
